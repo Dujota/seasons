@@ -7,16 +7,19 @@ class App extends Component {
   constructor(props) {
     super(props); // a reference to the parent's constructor function so that it runs
     this.state = { lat: null };
+
+    window.navigator.geolocation.getCurrentPosition(
+      position => {
+        this.setState({ lat: position.coords.latitude });
+      },
+      error => console.log(error)
+    );
   }
 
   // React says we have to define Render!!!!
   render() {
-    window.navigator.geolocation.getCurrentPosition(
-      position => this.setState(position),
-      error => console.log(error)
-    );
-
-    return <div>Latitude:</div>;
+    const { lat } = this.state;
+    return <div>Latitude: {lat}</div>;
   }
 }
 
