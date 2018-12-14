@@ -22,9 +22,10 @@ class App extends Component {
     console.log('My component just updated  - it re-rendered');
   }
 
-  // React says we have to define Render!!!!
-  render() {
-    console.log('Render Ran');
+  // HELPER METHODS
+
+  renderContent = () => {
+    // Extract all logic and conditionals away from the render method.
     const { lat, errorMessage } = this.state;
 
     if (errorMessage && !lat) {
@@ -36,6 +37,12 @@ class App extends Component {
     }
 
     return <Spinner message={'Please Accept the Location Request'} />;
+  };
+
+  // React says we have to define Render!!!!
+  render() {
+    console.log('Render Ran');
+    return <div className="border red">{this.renderContent()}</div>;
   }
 }
 
