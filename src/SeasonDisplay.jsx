@@ -26,6 +26,7 @@ const SeasonDisplay = props => {
   const season = getSeason(lat, new Date().getMonth);
   const { text, iconName } = seasonConfig[season]; // {text, iconName} we de-structure it from the object which calls the key based on the retured statement in getSeason method
 
+  // make sure that the root element of the component has a class name equal to the name of the component
   return (
     <div className={`season-display ${season}`}>
       <i className={`${iconName} icon massive icon-left`} />
