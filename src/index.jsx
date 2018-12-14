@@ -31,7 +31,7 @@ class App extends Component {
     }
 
     if (!errorMessage && lat) {
-      return <div> Latitude: {lat} </div>;
+      return <SeasonDisplay lat={lat} />;
     }
 
     return <div> Loading....</div>;
