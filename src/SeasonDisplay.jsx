@@ -23,15 +23,14 @@ const getSeason = (lat, month) => {
 const SeasonDisplay = props => {
   const { lat } = props;
   const season = getSeason(lat, new Date().getMonth);
-  const text = season === 'winter' ? "Brrr It's Chilly" : "Let's hit the beach";
-  const icon = season === 'winter' ? 'snowflake' : 'sun';
+  const { text, iconName } = seasonConfig[season]; // {text, iconName} we de-structure it from the object which calls the key based on the retured statement in getSeason method
 
   return (
     <div>
       <h1>
-        <i className={`${icon} icon large`} />
+        <i className={`${iconName} icon large`} />
         {text}
-        <i className={`${icon} icon large`} />
+        <i className={`${iconName} icon large`} />
       </h1>
     </div>
   );
