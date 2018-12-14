@@ -3,18 +3,23 @@ import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
 
 class App extends Component {
-  state = {
-    lat: null,
-    errorMessage: ''
-  };
+  // Belongs to the JS language itself to initialize a class
+  constructor(props) {
+    super(props); // a reference to the parent's constructor function so that it runs
+    this.state = { lat: null, errorMessage: '' }; // this is the only time we directly mutate the state instead of setState
+
+    window.navigator.geolocation.getCurrentPosition(
+      position => {
+        this.setState({ lat: position.coords.latitude });
+      },
+      error => {
+        this.setState({ errorMessage: error.message });
+      }
+    );
+  }
 
   componentDidMount() {
     console.log('My component did mount and was rendered to the screen');
-
-    window.navigator.geolocation.getCurrentPosition(
-      position => this.setState({ lat: position.coords.latitude }),
-      error => this.setState({ errorMessage: error.message })
-    );
   }
 
   componentDidUpdate(prevProps, prevState) {
