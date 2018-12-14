@@ -2,8 +2,14 @@ import React from 'react';
 
 // Design pattern that is used very often, its called a config object at the top of the component
 const seasonConfig = {
-  summer: {},
-  winter: {}
+  summer: {
+    text: "Let's hit the beach!",
+    iconName: 'sun'
+  },
+  winter: {
+    text: "Brrr It's Chilly",
+    iconName: 'snowflake'
+  }
 };
 
 const getSeason = (lat, month) => {
