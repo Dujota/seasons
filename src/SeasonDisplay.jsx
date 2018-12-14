@@ -1,3 +1,4 @@
+import './SeasonDisplay.css'; // before we import react, webpack will take the contents of this import and attach it to the index.html file
 import React from 'react';
 
 // Design pattern that is used very often, its called a config object at the top of the component
@@ -26,10 +27,10 @@ const SeasonDisplay = props => {
   const { text, iconName } = seasonConfig[season]; // {text, iconName} we de-structure it from the object which calls the key based on the retured statement in getSeason method
 
   return (
-    <div>
-      <i className={`${iconName} icon massive`} />
+    <div className={`season-display ${season}`}>
+      <i className={`${iconName} icon massive icon-left`} />
       <h1>{text}</h1>
-      <i className={`${iconName} icon massive`} />
+      <i className={`${iconName} icon massive icon-right`} />
     </div>
   );
 };
